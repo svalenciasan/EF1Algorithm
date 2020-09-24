@@ -1,0 +1,40 @@
+{
+  "items": ["gold", "diamond", "phone", "house"],
+  "agents": [{
+      "name": "aron",
+      "itemEvaluations": {
+        "gold": 1,
+        "diamond": 6,
+        "phone": 3,
+        "house": 3
+      }
+    },
+    {
+      "name": "bea",
+      "itemEvaluations": {
+        "gold": 4,
+        "diamond": 9,
+        "phone": 1,
+        "house": 5
+      }
+    },
+    {
+      "name": "carol",
+      "itemEvaluations": {
+        "gold": 10,
+        "diamond": 5,
+        "phone": 2,
+        "house": 1
+      }
+    },
+    {
+      "name": "derick",
+      "itemEvaluations": {
+        "gold": 11,
+        "diamond": 5,
+        "phone": 8,
+        "house": 3
+      }
+    }
+  ]
+}
