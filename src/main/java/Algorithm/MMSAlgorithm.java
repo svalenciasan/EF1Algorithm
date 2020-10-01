@@ -52,7 +52,9 @@ public class MMSAlgorithm {
       }
     }
     //Removes the items here to avoid ConcurrentModificationException.
-    items.remove(toRemove);
+    for (String remove : toRemove) {
+      items.remove(remove);
+    }
     //Second part just does EF1 allocation for the rest of the items and agents.
     EnvyFreeAlgorithm envyFreeAlgorithm = new EnvyFreeAlgorithm(items, agents);
     Map<Agent, ArrayList<String>> envyFreeDistribution = envyFreeAlgorithm.distributor();
