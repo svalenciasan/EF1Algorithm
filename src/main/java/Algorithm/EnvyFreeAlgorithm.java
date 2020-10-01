@@ -18,6 +18,7 @@ public class EnvyFreeAlgorithm {
   }
 
   public void setUp() {
+    itemDistribution = new HashMap<>();
     for (Agent agent : agents) {
       itemDistribution.put(agent, new ArrayList<>());
     }

@@ -14,6 +14,7 @@ public class MMSAlgorithm {
   Map<Agent, ArrayList<String>> itemDistribution = new HashMap<>();
 
   public void setUp() {
+    itemDistribution = new HashMap<>();
     //Initializes the Map of agents and assigns them empty arraylists.
     for (Agent agent : agents) {
       itemDistribution.put(agent, new ArrayList<>());
@@ -33,7 +34,9 @@ public class MMSAlgorithm {
   }
 
   public Map<Agent, ArrayList<String>> mmsDistribution() {
+    setUp();
     //Looks through unallocated item list to allocate the items to the agents which value them as >= MMS_ALLOCATION_TARGET.
+    ArrayList<String> toRemove = new ArrayList<>();
     for (String item : items) {
       //Looks through every agent's evaluation of the item.
       for (Agent currentAgent : agents) {
@@ -42,12 +45,14 @@ public class MMSAlgorithm {
         //and remove the item and agent from the distribution.
         if (itemEvaluations.get(item) >= MMS_ALLOCATION_TARGET) {
           itemDistribution.get(currentAgent).add(item);
-          items.remove(item);
+          toRemove.add(item);
           agents.remove(currentAgent);
           break;
         }
       }
     }
+    //Removes the items here to avoid ConcurrentModificationException.
+    items.remove(toRemove);
     //Second part just does EF1 allocation for the rest of the items and agents.
     EnvyFreeAlgorithm envyFreeAlgorithm = new EnvyFreeAlgorithm(items, agents);
     Map<Agent, ArrayList<String>> envyFreeDistribution = envyFreeAlgorithm.distributor();
