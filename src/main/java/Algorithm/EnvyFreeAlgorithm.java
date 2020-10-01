@@ -8,9 +8,14 @@ public class EnvyFreeAlgorithm {
   //Holds a list of the items, they will be removed from the list as they are allocated.
   ArrayList<String> items;
   //The order of distribution will just be the order of Agents in the array.
-  Agent[] agents;
+  ArrayList<Agent> agents;
   //The key is the Algorithm.Agent and the value is a list of the items assigned to that Algorithm.Agent.
   Map<Agent, ArrayList<String>> itemDistribution = new HashMap<>();
+
+  public EnvyFreeAlgorithm (ArrayList<String> items, ArrayList<Agent> agents) {
+    this.items = items;
+    this.agents = agents;
+  }
 
   public void setUp() {
     for (Agent agent : agents) {
